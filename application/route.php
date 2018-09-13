@@ -6,4 +6,4 @@ use think\Route;
 Route::get('/', 'index/Index/index');
 
 
-Route::get('api/banner/:id', 'api/BannerController/getBanner');
+Route::get('banner/:id', 'api/BannerController/getBanner');
