@@ -14,5 +14,8 @@ class ImageModel extends BaseModel
     protected $table = 'image';
     protected $hidden = ['id', 'from', 'update_time', 'delete_time'];
 
-
+    public function getUrlAttr($value, $data)
+    {
+        return $this->prefixImgUrl($value, $data);
+    }
 }
