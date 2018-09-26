@@ -26,12 +26,18 @@ class ThemeController extends Controller
         (new IDCollection())->goCheck();
         $ids = explode(',', $ids);
         $result = ThemeModel::getThemeById($ids);
-        if (!$result){
+        if ($result->isEmpty()){
             throw new ThemeException();
         }
         return $result;
     }
 
+    /**
+     * @param $id
+     * @return array|false|\PDOStatement|string|\think\Model
+     * @throws ThemeException
+     * @throws \app\api\exception\ParameterException
+     */
     public function getComplexOne($id)
     {
         (new IDMustBePositiveInteger())->goCheck();

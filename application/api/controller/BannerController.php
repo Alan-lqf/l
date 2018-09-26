@@ -24,7 +24,7 @@ class BannerController extends Controller
     {
         (new IDMustBePositiveInteger())->goCheck();
         $banner = BannerModel::getBannerByID($id);
-        if ($banner->isEmpty()){
+        if (!$banner){
             throw new BannerMissException();
         }
         return $banner;
