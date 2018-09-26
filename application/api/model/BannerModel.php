@@ -23,6 +23,7 @@ class BannerModel extends BaseModel
 
     public static function getBannerByID($id)
     {
+        //TODO select与find
         $banner = self::with(['items', 'items.img'])->select($id);
 //        $ba = self::with(['items', 'items.img'])->find($id);
         return $banner;
