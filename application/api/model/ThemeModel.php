@@ -23,10 +23,21 @@ class ThemeModel extends BaseModel
     {
         return $this->belongsTo('ImageModel', 'head_img_id', 'id');
     }
+
+    public function products()
+    {
+        return $this->belongsToMany('ProductModel', 'theme_product', 'product_id', 'theme_id');
+    }
     
     public static function getThemeById($ids)
     {
         $theme = self::with(['topicImg', 'headImg'])->select($ids);
+        return $theme;
+    }
+
+    public static function getThemeWithProducts($id)
+    {
+        $theme = self::with(['products', 'headImg', 'topicImg'])->find($id);
         return $theme;
     }
     
